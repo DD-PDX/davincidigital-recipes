@@ -21,9 +21,9 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Video stabilization using gyroscope data</string>
+			<string>Advanced open-source gyro-assisted video stabilization for cinematography, drone videography, and much more! Bring your cinematic FPV footage to the next level.</string>
 			<key>developer</key>
-			<string>Gyroflow</string>
+			<string>Gyroflow Dev Team</string>
 			<key>display_name</key>
 			<string>Gyroflow</string>
 			<key>name</key>
