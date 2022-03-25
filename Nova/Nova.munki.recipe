@@ -21,7 +21,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string> </string>
+			<string>The beautiful, fast, flexible, native Mac code editor.</string>
 			<key>developer</key>
 			<string>Panic, Inc.</string>
 			<key>display_name</key>
