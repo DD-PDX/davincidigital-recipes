@@ -23,7 +23,9 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string> </string>
+			<string>INAV Configurator is a crossplatform configuration tool for the INAV flight control system.  
+			
+			It runs as an app within Google Chrome and allows you to configure the INAV software running on any supported INAV target.</string>
 			<key>developer</key>
 			<string>Alberto Garcia Hierro</string>
 			<key>display_name</key>
