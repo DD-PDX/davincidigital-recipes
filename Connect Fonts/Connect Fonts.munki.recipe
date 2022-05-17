@@ -33,7 +33,7 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>10.14</string>
+	<string>1.0.0</string>
 	<key>ParentRecipe</key>
 	<string>com.davincid.download.ConnectFonts</string>
 	<key>Process</key>
