@@ -28,6 +28,12 @@
 			<string>Topaz Gigapixel AI</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/sh
+# Link  PS Plugins out of .app bundle
+rm -f /Applications/Adobe\ Photoshop\ 2022/Plug-ins/TopazGigapixelAI
+ln -s ln -s /Applications/Topaz\ Gigapixel\ AI.app/Contents/Resources/PS_Plugins /Applications/Adobe\ Photoshop\ 2022/Plug-ins/TopazGigapixelAI
+            </string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
