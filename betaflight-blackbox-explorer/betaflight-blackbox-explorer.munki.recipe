@@ -23,7 +23,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Interactive log viewer for flight logs recorded with blackbox</string>
+			<string>Nightly builds of the Blackbox Explorer</string>
 			<key>developer</key>
 			<string>The Betaflight Open Source Flight Controller Firmware Project</string>
 			<key>display_name</key>
