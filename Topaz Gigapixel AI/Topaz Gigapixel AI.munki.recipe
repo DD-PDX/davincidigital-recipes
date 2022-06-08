@@ -31,8 +31,16 @@
 			<key>postinstall_script</key>
 			<string>#!/bin/sh
 # Link  PS Plugins out of .app bundle
+#
+# Remove old symlink from PS 2022 if it exists
 rm -f /Applications/Adobe\ Photoshop\ 2022/Plug-ins/TopazGigapixelAI
+#
+# Create new symlink
 ln -s /Applications/Topaz\ Gigapixel\ AI.app/Contents/Resources/PS_Plugins /Applications/Adobe\ Photoshop\ 2022/Plug-ins/TopazGigapixelAI
+#
+# Fix permissions in resource folder within app bundle
+sudo chmod -R a+rwx /Applications/Topaz\ Gigapixel\ AI.app/Contents/Resources/local/tgrc
+#
             </string>
 			<key>unattended_install</key>
 			<true/>
