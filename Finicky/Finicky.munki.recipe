@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/%NAME%</string>
+		<string>autopkg/%NAME%</string>
 		<key>NAME</key>
 		<string>Finicky</string>
 		<key>pkginfo</key>
@@ -21,7 +21,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>A macOS app for customizing which browser to start</string>
+			<string>Finicky is a macOS application that allows you to set up rules that decide which browser is opened for every link or url. With Finicky as your default browser, you can tell it to open Facebook or Reddit in one browser, and Trello or LinkedIn in another.</string>
 			<key>developer</key>
 			<string>John Sterling</string>
 			<key>display_name</key>
