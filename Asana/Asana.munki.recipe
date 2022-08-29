@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/%NAME%</string>
+		<string>autopkg/%NAME%</string>
 		<key>NAME</key>
 		<string>Asana</string>
 		<key>pkginfo</key>
@@ -21,7 +21,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string> </string>
+			<string>Enter Asana—a way to easily communicate across teams, manage projects in one place, and reclaim more time with seamless collaboration.</string>
 			<key>developer</key>
 			<string>Asana, Inc.</string>
 			<key>display_name</key>
