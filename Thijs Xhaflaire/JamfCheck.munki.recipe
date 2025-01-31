@@ -21,7 +21,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>A native SwiftUI macOS application that check's Jamf Pro, Jamf Connect and Jamf Protect on it's state</string>
+			<string>A native SwiftUI macOS application that check's Jamf Pro, Jamf School, Jamf Now, Jamf Connect and Jamf Protect on it's state</string>
 			<key>developer</key>
 			<string>Thijs Xhaflaire</string>
 			<key>display_name</key>
