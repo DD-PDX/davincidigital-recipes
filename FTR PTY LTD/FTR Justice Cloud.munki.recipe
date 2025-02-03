@@ -21,7 +21,7 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Access your local network with your iOS devices.</string>
+			<string>FTR Justice Cloud App supports transcribers and court reporters working with recordings from participating courts that are stored on For The Record’s cloud platform.</string>
 			<key>developer</key>
 			<string>For The Record</string>
 			<key>display_name</key>
