@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)</string>
+	<string>Munki wrapper for the local pkg-based Network Share Mounter download recipe.</string>
 	<key>Description</key>
 	<string>Downloads the latest version of Network Share Mounter and imports it into Munki.</string>
 	<key>Identifier</key>
