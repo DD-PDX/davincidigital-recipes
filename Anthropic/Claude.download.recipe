@@ -46,7 +46,7 @@
 			<dict>
 				<key>path_deletion_error_is_fatal</key>
 				<false/>
-				<key>paths_to_delete</key>
+				<key>path_list</key>
 				<array>
 					<string>%RECIPE_CACHE_DIR%/Claude.app</string>
 					<string>%RECIPE_CACHE_DIR%/Claude.dmg</string>
