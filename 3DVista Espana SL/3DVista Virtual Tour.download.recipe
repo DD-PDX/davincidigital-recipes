@@ -46,6 +46,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>deep_verification</key>
+				<false/>
 				<key>input_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/3DVista Virtual Tour.app</string>
 				<key>requirement</key>
