@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)</string>
+	<string>NinjaRemote (NCPlayer) has no public "latest" endpoint, Sparkle feed, or version manifest - the download URL hard-codes the build number in its S3 path. To update, get the current macOS player URL from the NinjaOne console (Administration -&gt; Library -&gt; Downloads), then bump the VERSION input (preferably in the override). The filename is version-stamped so the AutoPkg cache busts on change.</string>
 	<key>Description</key>
-	<string>Downloads the latest version of NinjaRemote player.</string>
+	<string>Downloads a specific version of the NinjaRemote player (NCPlayer). Set VERSION to the build you want; see Comment for how to find the current build.</string>
 	<key>Identifier</key>
 	<string>com.davincid.download.NinjaRemoteplayer</string>
 	<key>Input</key>
@@ -14,6 +14,10 @@
 		<string>NCPlayer</string>
 		<key>NAME</key>
 		<string>NinjaRemote player</string>
+		<key>VERSION</key>
+		<string>13.35.8340</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://resources.ninjarmm.com/development/ninjacontrol/%VERSION%/ncplayer.dmg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.3</string>
@@ -23,9 +27,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.dmg</string>
+				<string>%NAME%-%VERSION%.dmg</string>
 				<key>url</key>
-				<string>https://resources.ninjarmm.com/development/ninjacontrol/13.35.8340/ncplayer.dmg</string>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
