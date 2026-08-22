@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Keeper Commander and imports it into Munki.
+
+Set the PLATFORM variable to the architecture string used in the asset's filename:
+
+    arm64   - Apple Silicon (keeper-commander-mac-arm64-vX.Y.Z.pkg)
+    x86_64  - Intel (keeper-commander-mac-x86_64-vX.Y.Z.pkg)
+
+PLATFORM defaults to arm64. Overrides should also set SUPPORTED_ARCH to the matching Munki architecture (arm64 or x86_64) so clients only see the package built for them.
+
+NOTE: the receipts inside Keeper's installer do not track the Commander release version - the CLI sub-package is versioned "0" and the launcher sub-package carries its own unrelated version - so a receipt-based install check would never detect an update. This recipe therefore pins the pkginfo version to the GitHub release version and supplies an explicit installs array keyed on the launcher app bundle, whose CFBundleShortVersionString does track the release (release 18.1.2 ships "v18.1.2", hence the "v" prefix). Because %version% is not known until the download phase has run, both are applied at run time via MunkiPkginfoMerger rather than being set in the Input pkginfo dict, where the substitution would not resolve.</string>
+	<key>Identifier</key>
+	<string>com.davincid.munki.KeeperCommander</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>KeeperCommander</string>
+		<key>SUPPORTED_ARCH</key>
+		<string>arm64</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Keeper Commander is a command-line and SDK interface to Keeper Security's password and secrets management platform. It can be used to access and control your Keeper vault, perform administrative functions, rotate passwords, eliminate hardcoded credentials and integrate Keeper into your backend systems.</string>
+			<key>developer</key>
+			<string>Keeper Security, Inc.</string>
+			<key>display_name</key>
+			<string>Keeper Commander</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%SUPPORTED_ARCH%</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+	<key>ParentRecipe</key>
+	<string>com.davincid.download.KeeperCommander</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>installs</key>
+					<array>
+						<dict>
+							<key>CFBundleIdentifier</key>
+							<string>com.keepersecurity.commander.launcher</string>
+							<key>CFBundleShortVersionString</key>
+							<string>v%version%</string>
+							<key>path</key>
+							<string>/Applications/Keeper Commander.app</string>
+							<key>type</key>
+							<string>application</string>
+							<key>version_comparison_key</key>
+							<string>CFBundleShortVersionString</string>
+						</dict>
+					</array>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
