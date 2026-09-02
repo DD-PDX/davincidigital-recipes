@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Keeper Commander (the Keeper Security CLI and SDK) from GitHub Releases.
+
+Keeper publishes a separate macOS installer package per architecture. Set the PLATFORM variable to the architecture string used in the asset's filename:
+
+    arm64   - Apple Silicon (keeper-commander-mac-arm64-vX.Y.Z.pkg)
+    x86_64  - Intel (keeper-commander-mac-x86_64-vX.Y.Z.pkg)
+
+PLATFORM defaults to arm64.
+
+Set PRERELEASE to a non-empty string to include prereleases, either via Input in an override or via the -k option, i.e.: `-k PRERELEASE=yes`</string>
+	<key>Identifier</key>
+	<string>com.davincid.download.KeeperCommander</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>KeeperCommander</string>
+		<key>PLATFORM</key>
+		<string>arm64</string>
+		<key>PRERELEASE</key>
+		<string></string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>asset_regex</key>
+				<string>^keeper-commander-mac-%PLATFORM%-v[0-9]+(\.[0-9]+)+\.pkg$</string>
+				<key>github_repo</key>
+				<string>Keeper-Security/Commander</string>
+				<key>include_prereleases</key>
+				<string>%PRERELEASE%</string>
+			</dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%PLATFORM%-%version%.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Callpod Inc. (234QNB7GCA)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
+				<key>strict_verification</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
