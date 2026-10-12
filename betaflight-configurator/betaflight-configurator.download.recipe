@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>The Betaflight app is no longer code signed or notarized upstream (arm64 build is ad-hoc signed with a broken signature, x64 build is unsigned), so CodeSignatureVerifier cannot be used. Integrity relies on HTTPS download of the official GitHub release asset. Revisit if upstream starts signing.</string>
+	<key>Description</key>
+	<string>Downloads the latest Betaflight (Configurator) release DMG from GitHub for a single architecture. Set ARCH to aarch64 (Apple Silicon, default) or x64 (Intel) in an override.</string>
+	<key>Identifier</key>
+	<string>com.davincid.download.betaflight-configurator</string>
+	<key>Input</key>
+	<dict>
+		<key>APP_FILENAME</key>
+		<string>Betaflight</string>
+		<key>ARCH</key>
+		<string>aarch64</string>
+		<key>NAME</key>
+		<string>betaflight-configurator</string>
+		<key>PRERELEASE</key>
+		<string></string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>asset_regex</key>
+				<string>^Betaflight-.*-%ARCH%\.dmg$</string>
+				<key>github_repo</key>
+				<string>betaflight/betaflight-configurator</string>
+				<key>include_prereleases</key>
+				<string>%PRERELEASE%</string>
+			</dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%ARCH%-%version%.dmg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
