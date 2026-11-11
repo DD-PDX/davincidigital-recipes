@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Imports the Watchman Monitoring Client into Munki. The client pkg's receipt (com.monitoringclient.clientupdater) is always version 5.0, so without an installs item MunkiImporter matches every new build to the existing one and silently skips it. This recipe adds an installs item for the MonitoringClient prefPane, whose version is a per-build timestamp (e.g. 202608081718) that the client's built-in updater keeps current on endpoints.</string>
+	<string>Imports the Watchman Monitoring Client into Munki. The client pkg's receipt (com.monitoringclient.clientupdater) is always version 5.0, so without an installs item MunkiImporter matches every new build to the existing one and silently skips it. This recipe adds an installs item for the MonitoringClient prefPane, whose version is a per-build timestamp (e.g. 202608081718) that the client's built-in updater keeps current on endpoints. The pkginfo version is also set from the Sparkle feed, since makepkginfo would otherwise use the static 5.0 receipt version.</string>
 	<key>Identifier</key>
 	<string>com.davincid.munki.MonitoringClient</string>
 	<key>Input</key>
@@ -76,6 +76,20 @@
 			<string>MunkiInstallsItemsCreator</string>
 		</dict>
 		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>The receipt version is always 5.0; use the vendor version from the download recipe's Sparkle feed instead.</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 		</dict>
