@@ -18,12 +18,25 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Comment</key>
+			<string>The vendor re-uploads each release to a new Dropbox link; download.svd360.com/?mac always points at the current one.</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://download.svd360.com/?mac</string>
+				<key>re_pattern</key>
+				<string>href="(?P&lt;download_url&gt;https://dl\.dropboxusercontent\.com/[^"]+/Street-View-Download-360-[\d.]+-universal\.dmg[^"]*)"</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>https://dl.dropboxusercontent.com/scl/fi/jknyx9ffj1wjymyo7gqoi/Street-View-Download-360-4.1.5-universal.dmg?rlkey=1t06luvxcpvt7l0lf9926n8m0&amp;dl=1</string>
+				<string>%download_url%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
